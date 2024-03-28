@@ -58,17 +58,7 @@ resource "aws_s3_bucket_website_configuration" "website" {
   }
   error_document {
     key = "error.html"
-  }
-
- 
+  } 
 }
 
-resource "aws_s3_bucket" "example_bucket" {
-  bucket = var.bucket_name
 
-  versioning {
-    enabled = true
-  }
-
-  acl = var.acl
-}
