@@ -3,5 +3,5 @@ output "websiteendpoint" {
 }
 
 output "public_ip" {
-  value = 
+  value = aws_instance.eric_devops.public_ip
 }
