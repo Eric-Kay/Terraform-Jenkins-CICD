@@ -17,10 +17,5 @@ variable "ami_id" {
 variable "bucket_name" {
   description = "The name of the S3 bucket to create"
   type        = string
-  default     = "eric-devops-terra-buck-2"
-}
-variable "acl" {
-  description = "The ACL (Access Control List) for the S3 bucket"
-  type        = string
-  default     = "private"
+  default     = "eric-devops-terra-buck-3"
 }
