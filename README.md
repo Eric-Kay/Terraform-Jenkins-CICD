@@ -17,3 +17,31 @@ Our journey will encompass several key objectives:
 6. __Integrating Jenkins and Terraform:__ To tie it all together, we’ll demonstrate how to integrate Jenkins with Terraform. This integration will empower you to automate the provisioning process, enhance the efficiency of your infrastructure management, and ensure that your Terraform state is securely stored and locked when needed.
 
 # Prerequisites:
+Before you embark on the journey of provisioning AWS resources using Terraform and Jenkins, it’s crucial to ensure that you have all the necessary components and configurations in place. Here are the prerequisites you should have before starting this tutorial:
+1. __AWS Account:__ You must have an active AWS account with administrative privileges or the necessary permissions to create and manage AWS resources.
+2. __S3 Bucket for Terraform State:__
+   + Purpose: To securely store your Terraform state files remotely.
+   + Log in to your AWS Management Console.
+   + Navigate to the S3 service.
+   + Create an S3 bucket with a unique name in the desired AWS region.
+   + Note down the bucket name as you’ll use it in your Terraform scripts.
+3. __DynamoDB Table for Locking Capability:__
+   + Access the AWS Management Console.
+   + Go to the DynamoDB service.
+   + Create a DynamoDB table with a unique name and primary key.
+   + Configure the table’s read and write capacity settings as needed.
+   + Note down the table name for reference.
+4. __Jenkins Setup:__
+   + Ensure that Jenkins is up and running in your environment.
+   + Configure Jenkins with the necessary plugins for AWS and Terraform integration.
+5. __Terraform Installation in Jenkins:__
+   + Terraform should be installed on the Jenkins server to execute Terraform scripts as part of your CI/CD pipeline.
+6. __Terraform Files in Source Code Management (SCM):__
+   + Your Terraform configuration files should already be available in your Source Code Management system (e.g., Git). Make sure you have the necessary access rights to the repository.
+7. __IAM Role for Jenkins EC2 Instance:__
+   + Create an IAM role in AWS.
+   + Attach the appropriate policy that grants permissions for AWS resource provisioning, DynamoDB access, S3 bucket operations, and any other required permissions.
+   + Associate the IAM role with the Jenkins EC2 instance.
+8. __GitHub Repository (Optional):__
+   + If you’re using a public repository as an example, you can fork the repository and start making changes in your own forked repository. Ensure that you have the necessary access to the repository.
+  
