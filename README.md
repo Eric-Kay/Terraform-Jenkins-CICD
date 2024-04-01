@@ -145,3 +145,47 @@ sudo apt-get update
 sudo apt-get install trivy -y
 
 ```
+Next, we will log in to Jenkins and start to configure our Pipeline in Jenkins.
+
+## Install Plugins like JDK, Sonarqube Scanner,Terraform
+
+Goto Manage Jenkins →Plugins → Available Plugins →
+
+Install below plugins
+
+1 → Eclipse Temurin Installer (Install without restart)
+
+2 → SonarQube Scanner (Install without restart)
+
+3 → Terraform
+
+Install Terraform on our Jenkins machine
+
+```bash
+wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update && sudo apt install terraform
+```
+
+check terraform version
+```bash
+terraform --version
+```
+let’s find the path to our terraform (we will use it in the tools section of Terraform).
+```bash
+which terraform
+```
+
+## Configure Java and Terraform in Global Tool Configuration
++ Goto Manage Jenkins → Tools → Install JDK(17) → Click on Apply and save.
+
+## Configure Sonar Server in Manage Jenkins
+Grab the Public IP Address of your EC2 Instance, Sonarqube works on Port 9000, so <Public IP>:9000. Goto your Sonarqube Server. Click on Administration → Security → Users → Click on Tokens and Update Token → Give it a name → and click on Generate Token
+
++ Goto Jenkins Dashboard → Manage Jenkins → Credentials → Add Secret Text.
++ Now, go to Dashboard → Manage Jenkins → System and configure system.
++ Goto Administration–> Configuration–>Webhooks and insert the jenkins URL.
+
+![Screenshot 2024-04-01 141650](https://github.com/Eric-Kay/petstore_DevSecOps/assets/126447235/2dee5554-a686-45f4-8520-70ceebb68bc6)
+
+Add details.
