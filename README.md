@@ -189,3 +189,37 @@ Grab the Public IP Address of your EC2 Instance, Sonarqube works on Port 9000, s
 ![Screenshot 2024-04-01 141650](https://github.com/Eric-Kay/petstore_DevSecOps/assets/126447235/2dee5554-a686-45f4-8520-70ceebb68bc6)
 
 Add details.
+
+```bash
+#in url section of quality gate
+<http://jenkins-public-ip:8090>/sonarqube-webhook/
+```
+## Create an IAM, S3 bucket and Dynamo DB table.
++ Navigate to __AWS CONSOLE__ → click on search field → click roles → click create roles → click AWS services → click choose a service or use case → click on Ec2.
++ Add the following policies:
+   + AmazonEC2FullAccess
+   + AmazonS3FullAccess
+   + AmazonDynamoDBFullAccess
++ Go to the Jenkins instance and add this role to the Ec2 instance.
++ Search for S3 in console and Click “Create bucket”
++ Search for DynamoDB in console and Click “Create table”
++ Click the “Table name” field. enter “dynamodb_table = “name of your choice””
++ Click the “Enter the partition key name” field and type LockID
+
+##  Docker plugin and credential Setup
+
+We need to install the Docker tool in our system, Goto Dashboard → Manage Plugins → Available plugins → Search for Docker and install these plugins
+
+Docker
+
+Docker Commons
+
+Docker Pipeline
+
+Docker API
+
+docker-build-step
+
+and click on install without restart.
+
++ Now, goto Dashboard → Manage Jenkins → Tools → Add DockerHub Username and Password under Global Credentials.
