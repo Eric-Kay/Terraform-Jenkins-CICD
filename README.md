@@ -1029,3 +1029,58 @@ pipeline{
     }
 }
 ```
+
+To give a user sudo permissions on an Ubuntu system, you need to add the user to the sudo group or grant them specific sudo access by editing the sudoers file. Here are two common ways to give a user sudo permissions:
+
+## Method 1: Add User to the sudo Group
+1. Log in to your Ubuntu system as a user with sudo privileges, or log in as the root user.
+2. Open a terminal.
+3. Run the following command to add a user (replace <username> with the actual username) to the sudo group:
+```bash
+sudo usermod -aG sudo <username>
+```
+
+Now add the below stages to your pipeline:
+
+```bash
+stage('Excutable permission to userdata'){
+            steps{
+                sh 'chmod 777 website.sh'
+            }
+        }
+        stage('Terraform init'){
+            steps{
+                sh 'terraform init'
+            }
+        }
+        stage('Terraform plan'){
+            steps{
+                sh 'terraform plan'
+            }
+        }
+```
+
+Configure the pipeline with build parameters to apply and destroy while building only then add the following stage to your pipeline.
+```bash
+stage('Terraform apply'){
+            steps{
+                sh 'terraform ${action} --auto-approve'
+            }
+        }
+```
+
+![Screenshot 2024-04-02 051633](https://github.com/Eric-Kay/petstore_DevSecOps/assets/126447235/816f71cd-3f10-4cea-a84a-ee2e345e4716)
+
+While at apply stage it automatically takes apply option and creates infrastructure in AWS and runs containers.
+
+Now copy the newly created Instance Ip address
+```bash
+<instance-ip:3000> #zomato app container
+```
+
+```bash
+<instance-ip:8081> #netflix container
+```
+
++ check s3 bucket is created or not
++ Check your s3 bucket for the tf state file with the name main
