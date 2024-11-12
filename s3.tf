@@ -20,39 +20,39 @@ resource "aws_s3_bucket_acl" "example" {
     aws_s3_bucket_ownership_controls.example,
     aws_s3_bucket_public_access_block.example,
   ]
-  bucket = aws_s3_bucket.mybucket.id
+  bucket = aws_s3_bucket.alicemay2024.id
   acl    = "public-read"
 }
 resource "aws_s3_object" "index" {
-  bucket = aws_s3_bucket.mybucket.id
+  bucket = aws_s3_bucket.alicemay2024.id
   key = "index.html"
   source = "index.html"
   acl = "public-read"
   content_type = "text/html"
 }
 resource "aws_s3_object" "error" {
-  bucket = aws_s3_bucket.mybucket.id
+  bucket = aws_s3_bucket.alicemay2024.id
   key = "error.html"
   source = "error.html"
   acl = "public-read"
   content_type = "text/html"
 }
 resource "aws_s3_object" "style" {
-  bucket = aws_s3_bucket.mybucket.id
+  bucket = aws_s3_bucket.alicemay2024.id
   key = "style.css"
   source = "style.css"
   acl = "public-read"
   content_type = "text/css"
 }
 resource "aws_s3_object" "script" {
-  bucket = aws_s3_bucket.mybucket.id
+  bucket = aws_s3_bucket.alicemay2024.id
   key = "script.js"
   source = "script.js"
   acl = "public-read"
   content_type = "text/javascript"
 }
 resource "aws_s3_bucket_website_configuration" "website" {
-  bucket = aws_s3_bucket.mybucket.id
+  bucket = aws_s3_bucket.alicemay2024.id
   index_document {
     suffix = "index.html"
   }
