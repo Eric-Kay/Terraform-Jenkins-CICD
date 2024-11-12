@@ -1,15 +1,15 @@
 #create s3 bucket
-resource "aws_s3_bucket" "mybucket" {
+resource "aws_s3_bucket" "alicemay2024" {
   bucket = var.bucket_name
 }
 resource "aws_s3_bucket_ownership_controls" "example" {
-  bucket = aws_s3_bucket.mybucket.id
+  bucket = aws_s3_bucket.alicemay2024.id
   rule {
     object_ownership = "BucketOwnerPreferred"
   }
 }
 resource "aws_s3_bucket_public_access_block" "example" {
-  bucket = aws_s3_bucket.mybucket.id
+  bucket = aws_s3_bucket.alicemay2024.id
   block_public_acls       = false
   block_public_policy     = false
   ignore_public_acls      = false
